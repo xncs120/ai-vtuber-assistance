@@ -3,7 +3,7 @@ This project is an AI VTuber and virtual assistant framework designed to serve a
 
 Built on top of the Agno agentic framework (python 3.10 prefered), the project supports advanced features such as session management, memory, function calling, and more—making it easy to implement complex AI behaviors and interactivity.
 
-A complete frontend UI with live 2d model is also included, fully integrated with the Agno backend API to provide a seamless development and user experience. The codebase is cleanly structured and modular, with extensibility in mind, allowing developers to easily add new features or improve existing ones.
+A complete frontend UI with live 2d model is also included, fully integrated with the Agno backend API to provide a seamless development and user experience. The codebase is cleanly structured and modular, with extensibility in mind, allowing developers to easily add new features or improve existing ones. This project is designed to run locally in your browser via localhost.
 
 Note: This project is not under active development or maintenance.
 
@@ -16,13 +16,13 @@ Note: This project is not under active development or maintenance.
 - [x] Use agent on terminal (py script)
 - [x] use agent on api
 - [x] Use agent on discord as assistant
-- [] Text to speech + voice clone
+- [ ] Text to speech + voice clone
 ### Frontend (vue)
 - [x] Load your live2d model (can interact depend on model created)
 - [x] Capture screen display
 - [x] Chat using chat-ui
-- [] Chat using mic
-- [] Response by voice and lipsync
+- [ ] Chat using mic
+- [ ] Response by voice and lipsync
 
 ## Getting started
 ```sh
