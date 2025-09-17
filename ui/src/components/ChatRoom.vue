@@ -10,6 +10,10 @@
     </div>
 
     <div class="flex justify-between items-center gap-4">
+      <button @click="reloadMessages" class="text-xs cursor-pointer">
+        <i class="fa fa-rotate-right"></i>
+      </button>
+
       <label class="cursor-pointer">
         <input type="checkbox" v-model="openSettings" class="checkbox hidden" />
         <i class="fa fa-sliders"></i>
@@ -40,8 +44,12 @@
   </div>
 
   <div ref="chatContainer" class="flex-1 overflow-y-auto p-4 space-y-4">
-    <div v-for="(msg, index) in messages" :key="index" :class="['chat', msg?.role === 'user' ? 'chat-end' : 'chat-start']">
-      <template v-if="msg?.role !== 'system'">
+    <div v-for="(msg, index) in messages" :key="index">
+      <div
+        v-if="!['system', 'tool'].includes(msg?.role)"
+        :class="['chat', msg?.role === 'user' ? 'chat-end' : 'chat-start']"
+        :title="dayjs(msg?.created_at).format('YYYY-MM-DD HH:mm')"
+      >
         <template v-if="msg?.role === 'assistant'">
           <div class="chat-image avatar">
             <div class="w-10 rounded-full">
@@ -49,6 +57,7 @@
             </div>
           </div>
         </template>
+
         <div
           :class="[
             'chat-bubble',
@@ -57,7 +66,7 @@
           ]"
           v-html="renderMarkdown(msg?.content)"
         ></div>
-      </template>
+      </div>
     </div>
   </div>
 
@@ -66,6 +75,7 @@
       <button class="btn w-10 " @click="toggleMic" :disabled="inResponse || !selectedAgent">
         <i :class="['fa fa-microphone', activeMic ? 'pulse-icon' : '' ]"></i>
       </button>
+
       <input
         v-model="message"
         type="text"
@@ -74,6 +84,7 @@
         @keyup.enter="sendMessage"
         :disabled="inResponse || !selectedAgent"
       />
+
       <button class="btn btn-primary w-10" @click="sendMessage" :disabled="inResponse || !selectedAgent">
         <i class="fa fa-paper-plane"></i>
       </button>
@@ -85,6 +96,7 @@
 import { computed, ref, watch, nextTick, onMounted } from 'vue'
 import { useStore } from 'vuex'
 import { useRouter, useRoute } from 'vue-router'
+import dayjs from 'dayjs'
 import { marked } from 'marked'
 import { getPlaygroundStatusAPI } from '../apis/playground'
 
@@ -127,6 +139,10 @@ const fetchPlaygroundStatus = async () => {
   } catch (error) {
     playgroundStatus.value = null
   }
+}
+
+const reloadMessages = () => {
+  store.dispatch('playground/fetchMessages', selectedSession.value)
 }
 
 const toggleMic = () => {
