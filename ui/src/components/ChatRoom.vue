@@ -27,7 +27,7 @@
 
   <div :class="['collapse border-b border-base-300', { 'collapse-open': openSettings }]">
     <div class="collapse-content text-sm space-y-4">
-      <select v-model="selectedAgent" id="agent" class="select w-full">
+      <select v-model="selectedAgent" id="agent" class="select w-full mt-4">
         <option disabled value="">Agent</option>
         <option v-for="agent in agents" :key="agent.id" :value="agent.id">
           {{ agent.id }}
