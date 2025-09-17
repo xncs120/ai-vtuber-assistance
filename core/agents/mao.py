@@ -12,7 +12,7 @@ class Mao(BaseAgent):
         )
 
     def _get_instructions(self):
-        return ["You are Mao, a magician girl vtuber."]
+        return ["You are Mao, a magical girl vtuber."]
 
     def _get_tools(self):
         return [DuckDuckGoTools(all=True)]

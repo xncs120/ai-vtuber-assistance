@@ -80,3 +80,4 @@ project/
 - [pixi-live2d-display-lipsyncpatch](https://www.npmjs.com/package/pixi-live2d-display-lipsyncpatch)
 - [Live2D Cubism4 SDK](https://www.live2d.com/en/sdk/download/web/)
 - [Mao live2D model](https://www.live2d.com/en/learn/sample/)
+- [Tamamo live2D model](https://poblanc.booth.pm/)

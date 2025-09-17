@@ -60,8 +60,8 @@ export default {
       const results = await getPlaygroundSessionsAPI(agentId)
       commit('setSessions', results)
     },
-    async fetchMessages({ commit }, sessionId) {
-      const results = await getPlaygroundSessionAPI(sessionId)
+    async fetchMessages({ commit }, {agentId, sessionId}) {
+      const results = await getPlaygroundSessionAPI(agentId, sessionId)
       commit('setMessages', results ?? [])
     },
     async sendMessage({ commit }, { agentId, sessionId, message }) {

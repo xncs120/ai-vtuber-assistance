@@ -76,7 +76,7 @@ export const sendPlaygroundAgentMessageAPI = async (agentId, sessionId, message,
 
 export const getPlaygroundSessionsAPI = async (agentId, type='agent') => {
   try {
-    let url = `${PLAYGROUND_URL}/sessions?type=${type}&component_id=${agentId}&limit=100&page=1&sort_by=created_at&sort_order=desc`
+    let url = `${PLAYGROUND_URL}/sessions?type=${type}&db_id=${agentId}&limit=100&page=1&sort_by=created_at&sort_order=desc`
     const response = await fetch(url)
     if (!response.ok) {
       return []
@@ -89,9 +89,9 @@ export const getPlaygroundSessionsAPI = async (agentId, type='agent') => {
   }
 }
 
-export const getPlaygroundSessionAPI = async (sessionId, type='agent') => {
+export const getPlaygroundSessionAPI = async (agentId, sessionId, type='agent') => {
   try {
-    let url = `${PLAYGROUND_URL}/sessions/${sessionId}?type=${type}`
+    let url = `${PLAYGROUND_URL}/sessions/${sessionId}?type=${type}&db_id=${agentId}`
     const response = await fetch(url)
 
     if (!response.ok) {

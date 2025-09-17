@@ -27,7 +27,7 @@
 
   <div :class="['collapse border-b border-base-300', { 'collapse-open': openSettings }]">
     <div class="collapse-content text-sm space-y-4">
-      <select v-model="selectedAgent" id="agent" class="select w-full">
+      <select v-model="selectedAgent" id="agent" class="select w-full mt-4">
         <option disabled value="">Agent</option>
         <option v-for="agent in agents" :key="agent.id" :value="agent.id">
           {{ agent.id }}
@@ -53,7 +53,7 @@
         <template v-if="msg?.role === 'assistant'">
           <div class="chat-image avatar">
             <div class="w-10 rounded-full">
-              <img src="/models/mao/profile.png" />
+              <img src="/models/poblanc/320a8d56-277a-4bd3-9925-4cc098b78769.png" />
             </div>
           </div>
         </template>
@@ -142,7 +142,7 @@ const fetchPlaygroundStatus = async () => {
 }
 
 const reloadMessages = () => {
-  store.dispatch('playground/fetchMessages', selectedSession.value)
+  store.dispatch('playground/fetchMessages', {agentId: selectedAgent.value, sessionId: selectedSession.value})
 }
 
 const toggleMic = () => {
@@ -193,7 +193,7 @@ watch(selectedAgent, (agentId) => {
 watch(selectedSession, (sessionId) => {
   if (sessionId) {
     router.push({ query: { ...route.query, session: sessionId } })
-    store.dispatch('playground/fetchMessages', sessionId)
+    store.dispatch('playground/fetchMessages', {agentId: selectedAgent.value, sessionId})
   }
 })
 

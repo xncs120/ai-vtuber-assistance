@@ -13,6 +13,7 @@ class BaseAgent(ABC):
 
         self.sqlite_path = os.path.join(configs.APP_STORAGE_DIR, "db", f"{self.agent_id}.db")
         self.sqlite_db = SqliteDb(
+            id=self.agent_id,
             db_file=self.sqlite_path,
             session_table="agent_sessions",
             memory_table="agent_memories",

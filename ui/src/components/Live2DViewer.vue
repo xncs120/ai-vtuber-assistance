@@ -144,7 +144,7 @@ onMounted(async () => {
     height: window.innerHeight,
     backgroundAlpha: 0,
   })
-  const model = await Live2DModel.from('/models/mao/runtime/mao_pro.model3.json')
+  const model = await Live2DModel.from('/models/poblanc/Poblanc.model3.json')
   app.stage.addChild(model)
   model.interactive = true
   model.buttonMode = true
